@@ -5,7 +5,6 @@ import FitnessProductCard from "./fitness-product-card";
 
 export interface BusinessFitness {
   name: string;
-  description: string;
   avatar: string;
   products: {
     name: string;
@@ -29,7 +28,7 @@ const BusinessCard: FunctionComponent<{
             <div>
               <Avatar src="https://i.pinimg.com/736x/cc/4e/1d/cc4e1de7025633fb8c1e91eca8a0f147.jpg" />
               <span className={"text-brand-purple-dark text-1-rem font-bold"}>
-                Pizza x Metro
+                {businessFitness.name}
               </span>
             </div>
             <div className="text-brand-gray font-bold">30 min</div>

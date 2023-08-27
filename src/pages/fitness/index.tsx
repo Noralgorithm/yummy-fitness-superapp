@@ -1,14 +1,15 @@
 import styledComponents from "styled-components";
 import Div100vh from "react-div-100vh";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import BusinessPageHeader from "../../components/header-component";
 import BusinessSearchComponent from "../../components/header-search-component";
-import BusinessCard from "./business-card";
+import BusinessCard, { BusinessFitness } from "./business-card";
+import useFilters from "../../hooks/use-filters";
 
 const FitnessPage: FunctionComponent<{ className?: string }> = ({
   className,
 }) => {
-  const businessCardLists = [];
+  /*const businessCardLists = [];
 
   for (let i = 0; i < 10; i++) {
     businessCardLists.push(
@@ -43,22 +44,99 @@ const FitnessPage: FunctionComponent<{ className?: string }> = ({
         }}
       />
     );
-  }
+  }*/
+
+  const { filters, setSearchText } = useFilters();
+  const [businesses, setBusinesses] = useState<BusinessFitness[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  loading;
+
+  useEffect(() => {
+    async function effectGetBusiness() {
+      try {
+        setLoading(true);
+        const businessList = await fetchBusinessFitnessList(filters.searchText);
+        setBusinesses(businessList);
+      } catch (error) {
+        //
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    effectGetBusiness();
+  }, [filters.searchText]);
 
   return (
     <Div100vh className={className}>
       <BusinessPageHeader labelText={"FITNESS"} />
       <BusinessSearchComponent
-        setSearchText={(v: string) => {
-          v;
-          return;
-        }}
-        searchText={""}
+        setSearchText={setSearchText}
+        searchText={filters.searchText}
       />
-      <div className={"container-cards-businesses"}>{businessCardLists}</div>
+      <div className={"container-cards-businesses"}>
+        {businesses.map((business) => (
+          <BusinessCard businessFitness={business} />
+        ))}
+      </div>
     </Div100vh>
   );
 };
+
+export interface BusinessFitnessRaw {
+  business: {
+    id: string;
+    name: string;
+    description: string;
+    imageUrl: string;
+    avatarImageUrl: string;
+    type: string;
+    schedule: string;
+  };
+  products: {
+    name: string;
+    imageUrl: string;
+  }[];
+}
+
+async function fetchBusinessFitnessList(
+  search?: string
+): Promise<BusinessFitness[]> {
+  try {
+    let searchExtra = "";
+    if (search) {
+      searchExtra = "?search=" + search;
+    }
+
+    const response = await fetch(
+      "https://yummycodicon.azurewebsites.net/search" + searchExtra,
+      {
+        method: "GET",
+      }
+    );
+
+    if (response.ok && response.status === 200) {
+      const resultJson: BusinessFitnessRaw[] = await response.json();
+      console.log("negocios obtenidos", resultJson);
+      return resultJson.map((businessRaw) => ({
+        id: businessRaw.business.id,
+        name: businessRaw.business.name,
+        avatar:
+          businessRaw.business.avatarImageUrl || businessRaw.business.imageUrl,
+        cover: businessRaw.business.imageUrl,
+        products: businessRaw.products.map((product) => ({
+          name: product.name,
+          image: product.imageUrl,
+        })),
+      }));
+    }
+
+    throw new Error("Error!");
+  } catch (error: unknown) {
+    if ((error as Error).message) throw new Error((error as Error).message);
+    throw new Error("Error desconocido!");
+  }
+}
 
 export default styledComponents(FitnessPage)`
   .container-cards-businesses {
