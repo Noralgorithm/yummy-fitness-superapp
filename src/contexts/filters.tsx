@@ -101,10 +101,23 @@ function filtersReducer(
     };
   }
 
+  if (action.type === "TOGGLE_IS_VEGAN") {
+    return {
+      ...state,
+      isVegan: !state.isVegan,
+    };
+  }
+
   return state;
 }
 
-export const FiltersContext = createContext<any>(null);
+export const FiltersContext = createContext<{
+  store: typeof initialState;
+  dispatch: React.Dispatch<{
+    type: string;
+    payload: any;
+  }>;
+} | null>(null);
 
 export function FiltersContextProvider({ children }: { children: ReactNode }) {
   const [store, dispatch] = useReducer(filtersReducer, initialState);

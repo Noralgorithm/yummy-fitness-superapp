@@ -4,7 +4,7 @@ import CategoriesPage from "../pages/categories";
 import BusinessesPage from "../pages/businesses";
 import ShopLayout from "../layouts/shop-layout";
 import FitnessPage from "../pages/fitness";
-import MainPage from "../pages/main";
+import FiltersTestingPage from "../pages/filters-testing-page";
 
 export const router = createBrowserRouter([
   {
@@ -13,7 +13,6 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <MainPage />,
       },
       {
         path: "/categories",
@@ -42,5 +41,9 @@ export const router = createBrowserRouter([
         element: <h1>Info. de producto</h1>,
       },
     ],
+  },
+  {
+    path: "/filters",
+    element: <FiltersTestingPage />,
   },
 ]);
