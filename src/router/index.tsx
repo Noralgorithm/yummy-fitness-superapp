@@ -4,12 +4,17 @@ import CategoriesPage from "../pages/categories";
 import BusinessesPage from "../pages/businesses";
 import ShopLayout from "../layouts/shop-layout";
 import FitnessPage from "../pages/fitness";
+import MainPage from "../pages/main";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
     children: [
+      {
+        path: "/",
+        element: <MainPage />,
+      },
       {
         path: "/categories",
         element: <CategoriesPage />,
