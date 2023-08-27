@@ -5,6 +5,7 @@ import BusinessesPage from "../pages/businesses";
 import ShopLayout from "../layouts/shop-layout";
 import FitnessPage from "../pages/fitness";
 import FiltersTestingPage from "../pages/filters-testing-page";
+import Templates from "../pages/templates";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
       {
         path: "/shop/fitness",
         element: <FitnessPage />,
+      },
+      {
+        path: "/shop/templates",
+        element: <Templates />,
       },
       {
         path: "/shop/businesses/[business_id]",

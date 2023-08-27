@@ -1,8 +1,24 @@
 import { ReactNode, createContext, useReducer } from "react";
 
-export type Level = "ALL" | "LOW" | "MEDIUM" | "HIGH";
+type Level = "ALL" | "LOW" | "MODERATE" | "HIGH";
 
-const initialState = {
+export interface FiltersState {
+  immediateDelivery: boolean;
+  scheduledOrder: boolean;
+  pickUpAtBranch: boolean;
+  orderByCalification: boolean;
+  orderByPrice: boolean;
+  orderByDeliveryTime: boolean;
+  orderByDistance: boolean;
+  calories: Level;
+  proteins: Level;
+  carbs: Level;
+  fats: Level;
+  isVegan: boolean;
+  searchText: string;
+}
+
+const initialState: FiltersState = {
   immediateDelivery: false,
   scheduledOrder: false,
   pickUpAtBranch: false,
