@@ -27,7 +27,7 @@ export default styledComponents(FitnessPage)`
   .container-cards-businesses {
     padding: 16px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 4px;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 8px;
   }
 `;
