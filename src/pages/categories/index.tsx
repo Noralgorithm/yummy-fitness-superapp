@@ -1,7 +1,9 @@
 import { AiFillCrown, AiOutlineHome } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import useFilters from "../../hooks/use-filters";
 
 function CategoriesPage() {
+  const { filters, setSearchText } = useFilters();
   const navigate = useNavigate();
 
   return (
@@ -21,6 +23,13 @@ function CategoriesPage() {
           type="text"
           className="w-[98%] mx-auto bg-brand-aqua border-t border-white text-white p-3 rounded-full shadow-md placeholder:text-white placeholder:font-extralight"
           placeholder="¿De qué tienes ganas hoy?"
+          value={filters.searchText}
+          onChange={(e) => {
+            if (e.target.value !== "") {
+              setSearchText(e.target.value);
+              navigate("/shop/businesses");
+            }
+          }}
         ></input>
       </header>
       <main className="bg-white w-full rounded-t-3xl h-full -mt-4 pt-5 px-4">

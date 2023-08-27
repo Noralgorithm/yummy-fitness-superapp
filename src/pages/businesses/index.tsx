@@ -4,30 +4,52 @@ import { FunctionComponent, useEffect, useState } from "react";
 import BusinessPageHeader from "../../components/header-component";
 import BusinessSearchComponent from "../../components/header-search-component";
 import BusinessCard, { Business } from "./business-card";
+import useFilters from "../../hooks/use-filters";
+import { Spin } from "antd";
 
 const BusinessPage: FunctionComponent<{ className?: string }> = ({
   className,
 }) => {
+  const { filters, setSearchText } = useFilters();
   const [businesses, setBusinesses] = useState<Business[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     async function effectGetBusiness() {
-      const businessList = await fetchBusinessList();
-      setBusinesses(businessList);
+      try {
+        setLoading(true);
+        const businessList = await fetchBusinessList(filters.searchText);
+        setBusinesses(businessList);
+      } catch (error) {
+        //
+      } finally {
+        setLoading(false);
+      }
     }
 
     effectGetBusiness();
-  }, []);
+  }, [filters.searchText]);
 
   return (
     <Div100vh className={className}>
       <BusinessPageHeader labelText={"COMIDA"} />
-      <BusinessSearchComponent />
-      <div className={"container-cards-businesses"}>
-        {businesses.map((business) => (
-          <BusinessCard business={business} />
-        ))}
-      </div>
+      <BusinessSearchComponent
+        searchText={filters.searchText}
+        setSearchText={setSearchText}
+      />
+      {businesses.length >= 0 ? (
+        <div className={"container-cards-businesses"}>
+          {businesses.map((business) => (
+            <BusinessCard business={business} />
+          ))}
+        </div>
+      ) : loading ? (
+        <Spin tip="Cargando..." size="large" spinning={true}>
+          Cargando
+        </Spin>
+      ) : (
+        <></>
+      )}
     </Div100vh>
   );
 };
@@ -40,10 +62,15 @@ export interface BusinessRaw {
   schedule: string;
 }
 
-async function fetchBusinessList(): Promise<Business[]> {
+async function fetchBusinessList(search?: string): Promise<Business[]> {
   try {
+    let searchExtra = "";
+    if (search) {
+      searchExtra = "?search=" + search;
+    }
+
     const response = await fetch(
-      "https://yummycodicon.azurewebsites.net/business",
+      "https://yummycodicon.azurewebsites.net/business" + searchExtra,
       {
         method: "GET",
       }

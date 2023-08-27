@@ -37,6 +37,9 @@ function useFilters() {
   const changeFattsLevel = (level: Level) =>
     dispatch({ type: "CHANGE_FAtTS_LEVEL", payload: level });
 
+  const setSearchText = (searchText: string) =>
+    dispatch({ type: "CHANGE_SEARCH_TEXT", payload: searchText });
+
   return {
     filters: store,
     toggleImmediateDeliveryFilter,
@@ -50,6 +53,7 @@ function useFilters() {
     changeCarbsLevel,
     changeFattsLevel,
     changeProteinsLevel,
+    setSearchText,
   };
 }
 
