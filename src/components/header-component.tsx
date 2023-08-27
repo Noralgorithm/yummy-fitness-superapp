@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 const BusinessPageHeader: FunctionComponent<{
   className?: string;
   labelText: string;
-}> = ({ className, labelText }) => {
+  hideKm?: boolean;
+}> = ({ className, labelText, hideKm }) => {
   const navigate = useNavigate();
 
   return (
@@ -26,8 +27,12 @@ const BusinessPageHeader: FunctionComponent<{
           {labelText}
         </div>
         <div className="text-md text-brand-purple-dark flex flex-nowrap flex-1 flex-end">
-          <FiTarget size={24} />
-          <span className="ml-2">10 Km</span>
+          {!hideKm && (
+            <>
+              <FiTarget size={24} />
+              <span className="ml-2">10 Km</span>
+            </>
+          )}
         </div>
       </div>
       <div></div>
