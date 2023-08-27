@@ -1,6 +1,9 @@
 import { AiFillCrown, AiOutlineHome } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 function CategoriesPage() {
+  const navigate = useNavigate();
+
   return (
     <div className="w-full h-full flex flex-col font-bold">
       <header className="bg-brand-aqua w-full pt-12 px-2 pb-12 flex flex-col gap-5">
@@ -29,7 +32,12 @@ function CategoriesPage() {
                 SERVICIO A DOMICILIO
               </span>
             </h2>
-            <picture className="rounded-2xl w-full mt-4">
+            <picture
+              className="rounded-2xl w-full mt-4"
+              onClick={() => {
+                navigate("/shop/businesses");
+              }}
+            >
               <img
                 className="rounded-2xl w-[164px]"
                 src="../../../public/images/yummy-delivery-icon.avif"
@@ -42,7 +50,12 @@ function CategoriesPage() {
               yummyFitness
               <span className="text-brand-gray text-xs">TIENDA SALUDABLE</span>
             </h2>
-            <picture className="rounded-2xl w-full">
+            <picture
+              className="rounded-2xl w-full"
+              onClick={() => {
+                navigate("/shop/fitness");
+              }}
+            >
               <img
                 className="rounded-2xl w-[164px]"
                 src="../../../public/images/yummy-fitness-icon.jpg"
