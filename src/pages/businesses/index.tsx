@@ -1,31 +1,33 @@
 import styledComponents from "styled-components";
 import Div100vh from "react-div-100vh";
 import { FunctionComponent } from "react";
-import { BiArrowBack } from "react-icons/bi";
+import BusinessPageHeader from "./header-component";
+import BusinessSearchComponent from "./header-search-component";
+import BusinessCard from "./business-card";
 
 const BusinessPage: FunctionComponent<{ className?: string }> = ({
   className,
 }) => {
+  const businessCardLists = [];
+
+  for (let i = 0; i < 10; i++) {
+    businessCardLists.push(<BusinessCard />);
+  }
+
   return (
     <Div100vh className={className}>
-      <div className="bg-white header-business-page">
-        <div>
-          <BiArrowBack />
-        </div>
-        <div>COMIDA</div>
-        <div>10 Km</div>
-      </div>
-      <div></div>;
+      <BusinessPageHeader />
+      <BusinessSearchComponent />
+      <div className={"container-cards-businesses"}>{businessCardLists}</div>
     </Div100vh>
   );
 };
 
 export default styledComponents(BusinessPage)`
-  .header-business-page {
-    display: flex;
-    height: 48px;
-    justify-content: space-between;
+  .container-cards-businesses {
     padding: 16px;
-    font-size: 16px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
   }
 `;
