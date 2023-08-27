@@ -84,6 +84,12 @@ function CategoriesPage() {
                 <picture
                   className="rounded-2xl w-full"
                   onClick={() => {
+                    changeCaloriesLevel("ALL");
+                    changeProteinsLevel("ALL");
+                    changeCarbsLevel("ALL");
+                    changeFatsLevel("ALL");
+                    setIsVegan(false);
+                    setSearchText("");
                     navigate("/shop/fitness");
                   }}
                 >
