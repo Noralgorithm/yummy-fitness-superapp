@@ -58,6 +58,8 @@ export interface BusinessRaw {
   id: string;
   name: string;
   imageUrl: string;
+  description: string;
+  avatarImageUrl: string;
   type: string;
   schedule: string;
 }
@@ -82,8 +84,8 @@ async function fetchBusinessList(search?: string): Promise<Business[]> {
       return resultJson.map((businessRaw) => ({
         id: businessRaw.id,
         name: businessRaw.name,
-        description: businessRaw.name,
-        avatar: businessRaw.imageUrl,
+        description: businessRaw.description || businessRaw.name,
+        avatar: businessRaw.avatarImageUrl || businessRaw.imageUrl,
         cover: businessRaw.imageUrl,
       }));
     }
