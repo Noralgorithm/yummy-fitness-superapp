@@ -2,20 +2,22 @@ import styledComponents from "styled-components";
 import { FunctionComponent } from "react";
 import { Card, Avatar } from "antd";
 
-const BusinessCard: FunctionComponent<{ className?: string }> = ({
-  className,
-}) => {
+export interface Business {
+  name: string;
+  description: string;
+  avatar: string;
+}
+
+const BusinessCard: FunctionComponent<{
+  className?: string;
+  business: Business;
+}> = ({ className, business }) => {
   return (
     <div className={className}>
       <Card
         className={`card-business`}
         hoverable
-        cover={
-          <img
-            className={"image-card-business"}
-            src="https://media-cdn.tripadvisor.com/media/photo-s/19/76/f0/71/pizze-varie-di-gianni.jpg"
-          />
-        }
+        cover={<img className={"image-card-business"} src={business.avatar} />}
         bodyStyle={{ padding: "0px" }}
       >
         <div className={"card-business-body"}>
@@ -27,11 +29,11 @@ const BusinessCard: FunctionComponent<{ className?: string }> = ({
           </div>
           <div>
             <span className={"text-brand-purple-dark text-1-rem font-bold"}>
-              Pizza x Metro
+              {business.name}
             </span>
             <br />
             <span className={"text-brand-gray description-business"}>
-              Compra tu Pizza x Metro!
+              {business.description}
             </span>
           </div>
         </div>

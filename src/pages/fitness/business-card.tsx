@@ -3,9 +3,20 @@ import { FunctionComponent } from "react";
 import { Card, Avatar } from "antd";
 import FitnessProductCard from "./fitness-product-card";
 
-const BusinessCard: FunctionComponent<{ className?: string }> = ({
-  className,
-}) => {
+export interface BusinessFitness {
+  name: string;
+  description: string;
+  avatar: string;
+  products: {
+    name: string;
+    image: string;
+  }[];
+}
+
+const BusinessCard: FunctionComponent<{
+  className?: string;
+  businessFitness: BusinessFitness;
+}> = ({ className, businessFitness }) => {
   return (
     <div className={className}>
       <Card
@@ -24,22 +35,9 @@ const BusinessCard: FunctionComponent<{ className?: string }> = ({
             <div className="text-brand-gray font-bold">30 min</div>
           </div>
           <div className="cbb-body">
-            <FitnessProductCard
-              name="Pizza"
-              image="https://images.hola.com/imagenes/cocina/recetas/20200123158804/receta-pizza-fresas-chocolate-helado/0-772-925/pizza-dulce-adobe-m.jpg"
-            />
-            <FitnessProductCard
-              name="Pizza"
-              image="https://images.hola.com/imagenes/cocina/recetas/20200123158804/receta-pizza-fresas-chocolate-helado/0-772-925/pizza-dulce-adobe-m.jpg"
-            />
-            <FitnessProductCard
-              name="Pizza"
-              image="https://images.hola.com/imagenes/cocina/recetas/20200123158804/receta-pizza-fresas-chocolate-helado/0-772-925/pizza-dulce-adobe-m.jpg"
-            />
-            <FitnessProductCard
-              name="Pizza"
-              image="https://images.hola.com/imagenes/cocina/recetas/20200123158804/receta-pizza-fresas-chocolate-helado/0-772-925/pizza-dulce-adobe-m.jpg"
-            />
+            {businessFitness.products.map((product) => (
+              <FitnessProductCard name={product.name} image={product.image} />
+            ))}
           </div>
         </div>
       </Card>

@@ -19,7 +19,8 @@ export default styledComponents(FitnessProductCard)`
     height: 100%;
 
     img {
-      height: 76px;
+      height: 70px;
+      width: 70px;
       object-fit: cover; /* Ajusta cómo se ajusta la imagen dentro de la tarjeta */
     }
 `;

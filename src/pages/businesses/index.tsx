@@ -11,7 +11,16 @@ const BusinessPage: FunctionComponent<{ className?: string }> = ({
   const businessCardLists = [];
 
   for (let i = 0; i < 10; i++) {
-    businessCardLists.push(<BusinessCard />);
+    businessCardLists.push(
+      <BusinessCard
+        business={{
+          name: "Pizza x Metro",
+          description: "Pide tus pizzas!",
+          avatar:
+            "https://media-cdn.tripadvisor.com/media/photo-s/19/76/f0/71/pizze-varie-di-gianni.jpg",
+        }}
+      />
+    );
   }
 
   return (
