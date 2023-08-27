@@ -32,7 +32,7 @@ const FitnessPage: FunctionComponent<{ className?: string }> = ({
     }
 
     effectGetBusiness();
-  }, [filters.searchText]);
+  }, [filters, filters.searchText]);
 
   return (
     <Div100vh className={className}>

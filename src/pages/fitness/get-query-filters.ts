@@ -13,43 +13,57 @@ export interface QueryFilters {
 }
 
 const minCaloriesDictionary: Record<string, number | null> = {
-  LOW: 1,
-  MEDIUM: 100,
-  HIGH: 200,
+  LOW: 0,
+  MODERATE: 300,
+  HIGH: 850,
   ALL: null,
 };
 
 const maxCaloriesDictionary: Record<string, number | null> = {
+  LOW: 300,
+  MODERATE: 850,
+  HIGH: 9999,
+  ALL: null,
+};
+
+const minFatDictionary: Record<string, number | null> = {
+  LOW: 1,
+  MODERATE: 100,
+  HIGH: 200,
+  ALL: null,
+};
+
+const maxFatDictionary: Record<string, number | null> = {
   LOW: 100,
-  MEDIUM: 200,
+  MODERATE: 200,
   HIGH: 300,
   ALL: null,
 };
 
 const minProteinDictionary: Record<string, number | null> = {
   LOW: 1,
-  MEDIUM: 100,
+  MODERATE: 100,
   HIGH: 200,
   ALL: null,
 };
 
 const maxProteinDictionary: Record<string, number | null> = {
   LOW: 100,
-  MEDIUM: 200,
+  MODERATE: 200,
   HIGH: 300,
   ALL: null,
 };
 
 const minCarbohydratesDictionary: Record<string, number | null> = {
   LOW: 1,
-  MEDIUM: 100,
+  MODERATE: 100,
   HIGH: 200,
   ALL: null,
 };
 
 const maxCarbohydratesDictionary: Record<string, number | null> = {
   LOW: 100,
-  MEDIUM: 200,
+  MODERATE: 200,
   HIGH: 300,
   ALL: null,
 };
@@ -62,8 +76,8 @@ export default function getFiltersQuery(options: FiltersState): QueryFilters {
     maxProtein: maxProteinDictionary[options.proteins + ""],
     minCarbohydrates: minCarbohydratesDictionary[options.carbs + ""],
     maxCarbohydrates: maxCarbohydratesDictionary[options.carbs + ""],
-    minFat: minCarbohydratesDictionary[options.fats + ""],
-    maxFat: maxCarbohydratesDictionary[options.fats + ""],
+    minFat: minFatDictionary[options.fats + ""],
+    maxFat: maxFatDictionary[options.fats + ""],
     vegan: !!options.isVegan,
   };
 }

@@ -3,8 +3,16 @@ import { useNavigate } from "react-router-dom";
 import useFilters from "../../hooks/use-filters";
 
 function CategoriesPage() {
-  const { filters, setSearchText } = useFilters();
   const navigate = useNavigate();
+  const {
+    changeCaloriesLevel,
+    changeProteinsLevel,
+    changeCarbsLevel,
+    changeFatsLevel,
+    setIsVegan,
+    filters,
+    setSearchText,
+  } = useFilters();
 
   return (
     <div className="w-full h-full flex flex-col font-bold">
@@ -27,6 +35,12 @@ function CategoriesPage() {
           onChange={(e) => {
             if (e.target.value !== "") {
               setSearchText(e.target.value);
+              /*changeCaloriesLevel("ALL");
+              changeProteinsLevel("ALL");
+              changeCarbsLevel("ALL");
+              changeFatsLevel("ALL");
+              setIsVegan(false);*/
+              //setSearchText("");
               navigate("/shop/businesses");
             }
           }}
@@ -44,6 +58,12 @@ function CategoriesPage() {
             <picture
               className="rounded-2xl w-full mt-4"
               onClick={() => {
+                changeCaloriesLevel("ALL");
+                changeProteinsLevel("ALL");
+                changeCarbsLevel("ALL");
+                changeFatsLevel("ALL");
+                setIsVegan(false);
+                setSearchText("");
                 navigate("/shop/businesses");
               }}
             >
@@ -78,6 +98,12 @@ function CategoriesPage() {
                 <picture
                   className="rounded-2xl w-full"
                   onClick={() => {
+                    changeCaloriesLevel("ALL");
+                    changeProteinsLevel("ALL");
+                    changeCarbsLevel("ALL");
+                    changeFatsLevel("ALL");
+                    setIsVegan(false);
+                    setSearchText("");
                     navigate("/shop/templates");
                   }}
                 >

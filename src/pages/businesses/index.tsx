@@ -1,3 +1,4 @@
+/* eslint-disable no-extra-boolean-cast */
 import styledComponents from "styled-components";
 import Div100vh from "react-div-100vh";
 import { FunctionComponent, useEffect, useState } from "react";
@@ -6,6 +7,7 @@ import BusinessSearchComponent from "../../components/header-search-component";
 import BusinessCard, { Business } from "./business-card";
 import useFilters from "../../hooks/use-filters";
 import { Spin } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const BusinessPage: FunctionComponent<{ className?: string }> = ({
   className,
@@ -13,9 +15,35 @@ const BusinessPage: FunctionComponent<{ className?: string }> = ({
   const { filters, setSearchText } = useFilters();
   const [businesses, setBusinesses] = useState<Business[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function effectGetBusiness() {
+      if (filters.calories !== "ALL") {
+        navigate("/shop/fitness");
+        return;
+      }
+
+      if (filters.carbs !== "ALL") {
+        navigate("/shop/fitness");
+        return;
+      }
+
+      if (filters.fats !== "ALL") {
+        navigate("/shop/fitness");
+        return;
+      }
+
+      if (!!filters.isVegan) {
+        navigate("/shop/fitness");
+        return;
+      }
+
+      if (filters.proteins !== "ALL") {
+        navigate("/shop/fitness");
+        return;
+      }
+
       try {
         setLoading(true);
         const businessList = await fetchBusinessList(filters.searchText);
@@ -28,7 +56,7 @@ const BusinessPage: FunctionComponent<{ className?: string }> = ({
     }
 
     effectGetBusiness();
-  }, [filters.searchText]);
+  }, [filters.searchText, filters]);
 
   return (
     <Div100vh className={className}>

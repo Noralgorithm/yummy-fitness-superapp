@@ -125,6 +125,13 @@ function filtersReducer(
     };
   }
 
+  if (action.type === "SET_IS_VEGAN") {
+    return {
+      ...state,
+      isVegan: !!action.payload,
+    };
+  }
+
   if (action.type === "CHANGE_SEARCH_TEXT") {
     return {
       ...state,

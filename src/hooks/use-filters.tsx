@@ -35,10 +35,13 @@ function useFilters() {
     dispatch({ type: "CHANGE_CARBS_LEVEL", payload: level });
 
   const changeFatsLevel = (level: Level) =>
-    dispatch({ type: "CHANGE_FAtTS_LEVEL", payload: level });
+    dispatch({ type: "CHANGE_FATS_LEVEL", payload: level });
 
   const toggleIsVegan = () =>
     dispatch({ type: "TOGGLE_IS_VEGAN", payload: null });
+
+  const setIsVegan = (bool: boolean) =>
+    dispatch({ type: "SET_IS_VEGAN", payload: bool });
 
   const setSearchText = (searchText: string) =>
     dispatch({ type: "CHANGE_SEARCH_TEXT", payload: searchText });
@@ -57,6 +60,7 @@ function useFilters() {
     changeFatsLevel,
     changeProteinsLevel,
     toggleIsVegan,
+    setIsVegan,
     setSearchText,
   };
 }

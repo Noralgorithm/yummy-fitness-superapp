@@ -84,7 +84,7 @@ function FiltersModal({
               >
                 <option value="ALL">Todos</option>
                 <option value="LOW">Bajo</option>
-                <option value="MEDIUM">Medio</option>
+                <option value="MODERATE">Medio</option>
                 <option value="HIGH">Alto</option>
               </select>
             </li>
@@ -98,7 +98,7 @@ function FiltersModal({
               >
                 <option value="ALL">Todos</option>
                 <option value="LOW">Bajo</option>
-                <option value="MEDIUM">Medio</option>
+                <option value="MODERATE">Medio</option>
                 <option value="HIGH">Alto</option>
               </select>
             </li>
@@ -112,7 +112,7 @@ function FiltersModal({
               >
                 <option value="ALL">Todos</option>
                 <option value="LOW">Bajo</option>
-                <option value="MEDIUM">Medio</option>
+                <option value="MODERATE">Medio</option>
                 <option value="HIGH">Alto</option>
               </select>
             </li>
@@ -126,7 +126,7 @@ function FiltersModal({
               >
                 <option value="ALL">Todos</option>
                 <option value="LOW">Bajo</option>
-                <option value="MEDIUM">Medio</option>
+                <option value="MODERATE">Medio</option>
                 <option value="HIGH">Alto</option>
               </select>
             </li>
