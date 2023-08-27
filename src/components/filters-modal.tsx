@@ -21,7 +21,9 @@ function FiltersModal({
   } = useFilters();
 
   return (
-    <main className={`w-full h-full bg-white ${visibilityClass} absolute p-8`}>
+    <main
+      className={`w-full h-full bg-white ${visibilityClass} absolute p-8 z-50 top-0 left-0`}
+    >
       <header className="w-full flex justify-between">
         <button onClick={hideModal}>
           <AiOutlineArrowLeft size={25} />
