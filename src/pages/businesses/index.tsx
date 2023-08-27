@@ -1,8 +1,8 @@
 import styledComponents from "styled-components";
 import Div100vh from "react-div-100vh";
 import { FunctionComponent } from "react";
-import BusinessPageHeader from "./header-component";
-import BusinessSearchComponent from "./header-search-component";
+import BusinessPageHeader from "../../components/header-component";
+import BusinessSearchComponent from "../../components/header-search-component";
 import BusinessCard from "./business-card";
 
 const BusinessPage: FunctionComponent<{ className?: string }> = ({
@@ -11,12 +11,21 @@ const BusinessPage: FunctionComponent<{ className?: string }> = ({
   const businessCardLists = [];
 
   for (let i = 0; i < 10; i++) {
-    businessCardLists.push(<BusinessCard />);
+    businessCardLists.push(
+      <BusinessCard
+        business={{
+          name: "Pizza x Metro",
+          description: "Pide tus pizzas!",
+          avatar:
+            "https://media-cdn.tripadvisor.com/media/photo-s/19/76/f0/71/pizze-varie-di-gianni.jpg",
+        }}
+      />
+    );
   }
 
   return (
     <Div100vh className={className}>
-      <BusinessPageHeader />
+      <BusinessPageHeader labelText={"COMIDA"} />
       <BusinessSearchComponent />
       <div className={"container-cards-businesses"}>{businessCardLists}</div>
     </Div100vh>
