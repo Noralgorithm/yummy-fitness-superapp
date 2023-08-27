@@ -6,6 +6,7 @@ import ShopLayout from "../layouts/shop-layout";
 import FitnessPage from "../pages/fitness";
 import FiltersTestingPage from "../pages/filters-testing-page";
 import Templates from "../pages/templates";
+import MainPage from "../pages/main";
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <MainPage />,
       },
       {
         path: "/categories",
