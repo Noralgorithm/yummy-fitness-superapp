@@ -5,7 +5,7 @@ import BusinessPageHeader from "../../components/header-component";
 import BusinessSearchComponent from "../../components/header-search-component";
 import BusinessCard from "./business-card";
 
-const BusinessPage: FunctionComponent<{ className?: string }> = ({
+const FitnessPage: FunctionComponent<{ className?: string }> = ({
   className,
 }) => {
   const businessCardLists = [];
@@ -16,14 +16,14 @@ const BusinessPage: FunctionComponent<{ className?: string }> = ({
 
   return (
     <Div100vh className={className}>
-      <BusinessPageHeader labelText={"COMIDA"} />
+      <BusinessPageHeader labelText={"FITNESS"} />
       <BusinessSearchComponent />
       <div className={"container-cards-businesses"}>{businessCardLists}</div>
     </Div100vh>
   );
 };
 
-export default styledComponents(BusinessPage)`
+export default styledComponents(FitnessPage)`
   .container-cards-businesses {
     padding: 16px;
     display: grid;

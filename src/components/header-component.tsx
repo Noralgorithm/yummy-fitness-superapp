@@ -3,9 +3,10 @@ import { FunctionComponent } from "react";
 import { BiArrowBack } from "react-icons/bi";
 import { FiTarget } from "react-icons/fi";
 
-const BusinessPageHeader: FunctionComponent<{ className?: string }> = ({
-  className,
-}) => {
+const BusinessPageHeader: FunctionComponent<{
+  className?: string;
+  labelText: string;
+}> = ({ className, labelText }) => {
   return (
     <div className={className}>
       <div className="bg-white header-business-page w-full">
@@ -13,7 +14,7 @@ const BusinessPageHeader: FunctionComponent<{ className?: string }> = ({
           <BiArrowBack size={28} />
         </div>
         <div className="text-lg font-bold text-brand-purple-dark flex-1">
-          COMIDA
+          {labelText}
         </div>
         <div className="text-md text-brand-purple-dark flex flex-nowrap flex-1 flex-end">
           <FiTarget size={24} />
