@@ -1,5 +1,4 @@
 import { AiFillCrown, AiOutlineHome } from "react-icons/ai";
-import yummyFitnessIcon from "../../../public/images/yummy-fitness-icon.jpg";
 
 function CategoriesPage() {
   return (
