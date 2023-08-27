@@ -9,7 +9,7 @@ export default {
         "brand-yellow": "#F9EB57",
         "brand-gray": "#717B87",
         "brand-lavender": "#8873B6",
-        "brand-dark-green": "033830",
+        "brand-dark-green": "#033830",
       },
     },
   },
