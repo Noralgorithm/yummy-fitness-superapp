@@ -59,18 +59,36 @@ function CategoriesPage() {
               yummyFitness
               <span className="text-brand-gray text-xs">TIENDA SALUDABLE</span>
             </h2>
-            <picture
-              className="rounded-2xl w-full"
-              onClick={() => {
-                navigate("/shop/fitness");
-              }}
-            >
-              <img
-                className="rounded-2xl w-[164px]"
-                src="../../../public/images/yummy-fitness-icon.jpg"
-                alt="yummy fitness icon"
-              ></img>
-            </picture>
+            <ul className="flex gap-3">
+              <li>
+                <picture
+                  className="rounded-2xl w-full"
+                  onClick={() => {
+                    navigate("/shop/fitness");
+                  }}
+                >
+                  <img
+                    className="rounded-2xl w-[164px]"
+                    src="../../../public/images/yummy-fitness-icon.jpg"
+                    alt="yummy fitness icon"
+                  ></img>
+                </picture>
+              </li>
+              <li>
+                <picture
+                  className="rounded-2xl w-full"
+                  onClick={() => {
+                    navigate("/shop/templates");
+                  }}
+                >
+                  <img
+                    className="rounded-2xl w-[164px]"
+                    src="../../../public/images/yummy-recipes-icon.jpg"
+                    alt="yummy fitness icon"
+                  ></img>
+                </picture>
+              </li>
+            </ul>
           </li>
         </ul>
       </main>
