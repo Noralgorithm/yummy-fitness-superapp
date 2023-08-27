@@ -15,6 +15,7 @@ const initialState = {
   carbs: "ALL" as Level,
   fats: "ALL" as Level,
   isVegan: false,
+  searchText: "",
 };
 
 function filtersReducer(
@@ -105,6 +106,13 @@ function filtersReducer(
     return {
       ...state,
       isVegan: !state.isVegan,
+    };
+  }
+
+  if (action.type === "CHANGE_SEARCH_TEXT") {
+    return {
+      ...state,
+      searchText: action.payload,
     };
   }
 

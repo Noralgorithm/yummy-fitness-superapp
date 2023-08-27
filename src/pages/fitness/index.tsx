@@ -48,7 +48,13 @@ const FitnessPage: FunctionComponent<{ className?: string }> = ({
   return (
     <Div100vh className={className}>
       <BusinessPageHeader labelText={"FITNESS"} />
-      <BusinessSearchComponent />
+      <BusinessSearchComponent
+        setSearchText={(v: string) => {
+          v;
+          return;
+        }}
+        searchText={""}
+      />
       <div className={"container-cards-businesses"}>{businessCardLists}</div>
     </Div100vh>
   );

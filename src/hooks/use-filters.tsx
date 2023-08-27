@@ -40,6 +40,9 @@ function useFilters() {
   const toggleIsVegan = () =>
     dispatch({ type: "TOGGLE_IS_VEGAN", payload: null });
 
+  const setSearchText = (searchText: string) =>
+    dispatch({ type: "CHANGE_SEARCH_TEXT", payload: searchText });
+
   return {
     filters: store,
     toggleImmediateDeliveryFilter,
@@ -54,6 +57,7 @@ function useFilters() {
     changeFatsLevel,
     changeProteinsLevel,
     toggleIsVegan,
+    setSearchText,
   };
 }
 
